@@ -1,3 +1,5 @@
+
+
 from __future__ import annotations
 from abc import ABC, abstractmethod
 import os
@@ -5,8 +7,12 @@ import os
 # Creador
 
 
-class Simplepizzafactory(ABC):
+class PizzaStore(ABC):
 
+    def create_pizza(self, type):
+      pass
+class NyPizzaStore(PizzaStore):
+    
     def create_pizza(self, type):
         os.system("cls")
         if type == '1':
@@ -19,8 +25,11 @@ class Simplepizzafactory(ABC):
             return PepperoniPizza()
         else:
             return print('Selecciona una opcion valida ')
-
-
+        
+class ChicagoPizzaStore(PizzaStore):
+    def create_pizza(self, type):
+        return super().create_pizza(type)
+    
 # Productos
 class Pizza(ABC):
     @abstractmethod
@@ -38,7 +47,7 @@ class Pizza(ABC):
 
 
 # Productos concretos
-class ChessePizza(Pizza):
+class NYChessePizza(Pizza):
     def prepare(self) -> str:
         return print("{prepparing of the ChessePizza}")
 
@@ -74,4 +83,3 @@ if __name__ == "__main__":
     print("Selecciona 4 para PepperoniePizza")
     type = input('opcion :')
     order_pizza(Simplepizzafactory(), type)
-
