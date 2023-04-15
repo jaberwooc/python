@@ -3,137 +3,189 @@ from abc import ABC, abstractmethod
 import os
 
 # Creador
-
+#Jafet Misael Diaz Chavelas
 
 class PizzaStore(ABC):
-
-    def create_pizza(type):
+    @abstractmethod
+    def create_pizza():
         
         pass
     
-    def order_pizza(pizza: PizzaStore,type) -> None:
-        product = pizza.create_pizza(type)
+    def order_pizza(self) -> None:
+        product = self.create_pizza()
+        product.prepare()
         product.cut()
+        product.bake()
+        product.box()
+        
+  
+        
   
 
-        
+##creador concreto
 class NyPizzaStore(PizzaStore):
     
-    def create_pizza(type):
-        os.system("cls")
+    def create_pizza():
+        print("Hola que vas a Ordenar?")
+        print("Selecciona ChessePizza")
+        print("Selecciona VeggiePizza")
+        print("Selecciona ClamPizza")
+        print("Selecciona PepperoniePizza")
+        type = input('opcion :')
+        
         if type == 'ChessePizza':
-            return NYStyleChessePizza()
+            x = menutops()
+            return NYStyleChessePizza(x)
         elif type == 'VeggiePizza':
-            return NYStyleVeggiePizza()
+            x = menutops()
+            return NYStyleVeggiePizza(x)
         elif type == 'ClamPizza':
-            return NYStyleClamPizza()
+            x = menutops()
+            return NYStyleClamPizza(x)
         elif type == 'PepperoniePizza':
-            return NYStylePepperoniPizza()
+            x = menutops()
+            return NYStylePepperoniPizza(x)
         else:
             return print('Selecciona una opcion valida ')
         
+#Jafet Misael Diaz Chavelas
+        
 class ChicagoPizzaStore(PizzaStore):
-    def create_pizza(type) -> Pizza:
-        os.system("cls")
+    def create_pizza() -> Pizza:
+        print("Hola que vas a Ordenar?")
+        print("Selecciona ChessePizza")
+        print("Selecciona VeggiePizza")
+        print("Selecciona ClamPizza")
+        print("Selecciona PepperoniePizza")
+        type = input('opcion :')
         if type == 'ChessePizza':
-            return ChicagoStyleChessePizza()
+            x = menutops()
+            return ChicagoStyleChessePizza(x)
         elif type == 'VeggiePizza':
-            return ChicagoStyleVeggiePizza()
+            x = menutops()
+            return ChicagoStyleVeggiePizza(x)
         elif type == 'ClamPizza':
-            return ChicagoStyleClamPizza()
+            x = menutops()
+            return ChicagoStyleClamPizza(x)
         elif type == 'PepperoniePizza':
-            return ChicagoStylePepperoniPizza()
+            x = menutops() 
+            return ChicagoStylePepperoniPizza(x)
         else:
             return print('Selecciona una opcion valida ')
         
 # Productos
 class Pizza(ABC):
     toppings = []
-    def prepare(type) -> str:
-        print(f"prepparing of the {type}")
+    name = 0
+    
+    def prepare(self) -> str:
+        print(f"prepparing of the {self.name}")
         print("Tossing Dough")
         print("Adding Sauce")
-        print("Adding Toppings")
+        print(f"Adding Toppings {self.toppings[0]}")
         
-    def bake() -> str:
+    def bake(self) -> str:
         return print("Bake for 25 minutes at 350")
-    @abstractmethod
-    def cut() -> str:
+    def cut(self) -> str:
         return print("Cutting the pizza into diagonal alices")
 
-    def box() -> str:
+    def box(self) -> str:
         return print("Place pizza in official PizzaStore box")
+    
+    def getname(self):
+        return self.name
 
 
 # Productos concretos ny
 class NYStyleChessePizza(Pizza):
-    def __init__(self) -> None:
-        namme = 'NY style Sauce and Chesse Pizza'
-        dough = 'Thin Crust dough'
-        sauce = 'Marinara Sauce'
+    def __init__(self,t) -> None:
+        self.name = 'NY style Sauce and Chesse Pizza'
+        self.dough = 'Thin Crust dough'
+        self.sauce = 'Marinara Sauce'
+        self.toppings.append(t)
   
-    def cut() -> str:
+    def cut(self) -> str:
         return print("Cutting the pizza into square alices")
 
+#Jafet Misael Diaz Chavelas
 
 class NYStyleVeggiePizza(Pizza):
-    def prepare(self) -> str:
-        return print("{prepparing of the VeggiePizza}")
+   def __init__(self,t) -> None:
+        self.name = 'NY style Sauce and Veggie Pizza'
+        self.dough = 'Thin Crust dough'
+        self.sauce = 'Marinara Sauce'
+        self.toppings.append(t)
 
 
 class NYStyleClamPizza(Pizza):
-    def prepare(self) -> str:
-        return print("{prepparing  of the ClamPizza}")
+  def __init__(self,t) -> None:
+        self.name = 'NY style Sauce and Clam Pizza'
+        self.dough = 'Thin Crust dough'
+        self.sauce = 'Marinara Sauce'
+        self.toppings.append(t)
 
 
 class NYStylePepperoniPizza(Pizza):
-    def prepare(self) -> str:
-        return print("{prepparing of the PepperoniPizza}")
+    def __init__(self,t) -> None:
+        self.name = 'NY style Sauce and Pepperoni Pizza'
+        self.dough = 'Thin Crust dough'
+        self.sauce = 'Marinara Sauce'
+        self.toppings.append(t)
 
 
 # Productos concretos chicago
 class ChicagoStyleChessePizza(Pizza):
-    def __init__(self) -> None:
-        self.namme = 'Chicago style Sauce and Chesse Pizza'
-        dough = 'Thin Crust dough'
-        sauce = 'Marinara Sauce'
-    def cut() -> str:
+    def __init__(self,t) -> None:
+        self.name = 'Chicago style Sauce and Chesse Pizza'
+        self.dough = 'Extra Thick Crust dough'
+        self.sauce = 'Flum Tomato Sauce'
+        self.toppings.append(t)
+
+    def cut(self) -> str:
         return print("Cutting the pizza into square alices")
 
         
 
 
 class ChicagoStyleVeggiePizza(Pizza):
-    def prepare(self) -> str:
-        return print("{prepparing of the VeggiePizza}")
+  def __init__(self,t) -> None:
+        self.name = 'Chicago style Sauce and Veggie Pizza'
+        self.dough = 'Extra Thick Crust dough'
+        self.sauce = 'Flum Tomato Sauce'
+        self.toppings.append(t)
+
 
 
 class ChicagoStyleClamPizza(Pizza):
-    def prepare(self) -> str:
-        return print("{prepparing of the ClamPizza}")
+    def __init__(self,t) -> None:
+        self.name = 'Chicago style Sauce and Clam Pizza'
+        self.dough = 'Extra Thick Crust dough'
+        self.sauce = 'Flum Tomato Sauce'
+        self.toppings.append(t)
 
+
+#Jafet Misael Diaz Chavelas
 
 class ChicagoStylePepperoniPizza(Pizza):
-    def prepare(self) -> str:
-        return print("{prepparing of the PepperoniPizza}")
+    def __init__(self,t) -> None:
+        self.namme = 'Chicago style Sauce and Pepperoni Pizza'
+        self.dough = 'Extra Thick Crust dough'
+        self.sauce = 'Flum Tomato Sauce'
+        self.toppings.append(t)
 
 
 
-
+def menutops():
+        os.system("clear")
+        print('adding toppings?')
+        print('select Grated Regiano Chesse')
+        print('select Shered Mozzarella Chesse')
+        x=input('option:')
+        return x
         
-if __name__ == "__main__":
-    print("Hola que vas a Ordenar?")
-    print("Selecciona 1 para ChessePizza")
-    print("Selecciona 2 para VeggiePizza")
-    print("Selecciona 3 para ClamPizza")
-    print("Selecciona 4 para PepperoniePizza")
-    type = input('opcion :')
 
-    if type == '1':
-        PizzaStore.order_pizza(NyPizzaStore,'ChessePizza')
-    elif type == '2':
-        PizzaStore.order_pizza(NyPizzaStore,'VeggiePizza')
-    if type == '3':
-        PizzaStore.order_pizza(NyPizzaStore,'ClamPizza')
-    elif type == '4':
-        PizzaStore.order_pizza(NyPizzaStore,'PepperoniePizza')
+ #Jafet Misael Diaz Chavelas
+       
+if __name__ == "__main__":
+        PizzaStore.order_pizza(NyPizzaStore)
+        PizzaStore.order_pizza(ChicagoPizzaStore)
