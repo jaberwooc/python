@@ -96,34 +96,50 @@ if __name__ == "__main__" :
     salir = True
     while(salir):
         os.system('cls')
-        print('Ducks!')
+        print('MENU')
         print('select the option')
-        print('Select 1 for MallarDuck ')
-        print('Select 2 for RedHeadDuck ')
-        print('Select 3 for RubberDuck ')
-        print('Select 4 for DecoyDuck ')
-        type = input('option : ')
-        if type == '1':
-            mallar = MallardDuck()
-            mallar.perfomfly()
-            mallar.setflybehaivor(FlyRocketPowered())
-            mallar.perfomfly()
-            mallar.perfomQuack()
-        if type == '2':
-            mallar = MallardDuck()
-            mallar.perfomfly()
-            mallar.setflybehaivor(FlyRocketPowered())
-            mallar.perfomfly()
-            mallar.perfomQuack()
-        if type == '3':
-            mallar = MallardDuck()
-            mallar.perfomfly()
-            mallar.setflybehaivor(FlyRocketPowered())
-            mallar.perfomfly()
-            mallar.perfomQuack()
-        if type == '4':
-            mallar = MallardDuck()
-            mallar.perfomfly()
-            mallar.setflybehaivor(FlyRocketPowered())
-            mallar.perfomfly()
-            mallar.perfomQuack()
+        print('Press 1 - Select Duck')
+        print('Press 2 - start')
+        print('Press 3 - Change Fly')
+        print('Press 4 - Change Quack')
+        print('Press 5 - Exit Program')
+        op = input()
+        if op =='1':
+            print('Ducks!')
+            print('select the option')
+            print('Select 1 for MallarDuck ')
+            print('Select 2 for RedHeadDuck ')
+            print('Select 3 for RubberDuck ')
+            print('Select 4 for DecoyDuck ')
+            type = input('option : ')
+            if type == '1':
+                mallar = MallardDuck()
+            elif type == '2':
+                mallar = RedHeadDuck()
+            elif type == '3':
+                mallar = RubberDuck()
+            elif type == '4':
+                mallar = DecoyDuck()
+           
+        elif op =='2':
+            if type == '1':
+                mallar.perfomfly()
+                mallar.setflybehaivor(FlyRocketPowered())
+                mallar.perfomfly()
+                mallar.perfomQuack()
+            elif type == '2':
+                mallar.perfomfly()
+                mallar.setflybehaivor(FlyRocketPowered())
+                mallar.perfomfly()
+                mallar.perfomQuack()
+            elif type == '3':
+                mallar.perfomfly()
+                mallar.setflybehaivor(FlyRocketPowered())
+                mallar.perfomfly()
+                mallar.perfomQuack()
+            elif type == '4':
+                mallar.perfomfly()
+                mallar.setflybehaivor(FlyRocketPowered())
+                mallar.perfomfly()
+                mallar.perfomQuack()
+        
